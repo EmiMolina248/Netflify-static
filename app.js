@@ -5,7 +5,7 @@ const path = require("path");
 const morgan = require("morgan");
 const cloudinary = require("cloudinary").v2;
 const app = express();
-const myRouter = require("./api/routes/myRouter.js");
+const myRouter = require("./api/routes/myRouter");
 const cors = require("cors");
 const session = require('express-session');
 //Defino el motor de plantillas a utilizar
@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 //Agrego un enrutador compatible
-app.use("/api/routes/myRouter.js", myRouter);
+app.use("./api/routes/myRouter", myRouter);
 app.use("/", myRouter);
 
 module.exports = app;
