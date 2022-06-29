@@ -20,6 +20,9 @@ mongoose
     });
 
 const port = 3500;
+app.get("/test",(req,res) =>{
+ res.send("GENIOOOOO")
+});
 //Corremos el servidor en el puerto seleccionado
 app.listen(port, () => {
     console.log(`Servidor corriendo en el puerto ${port} correctamente`);
