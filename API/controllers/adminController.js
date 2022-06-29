@@ -11,12 +11,12 @@ global.login = false;
 //respuesta a una petición de tipo post
 
 exports.vista = (req, res) => {
-    res.status(200).render("login", { isLogin: isLogin, login: login });
+    res.status(200).render("../public/views/login", { isLogin: isLogin, login: login });
 };
 
 //error404
 exports.error404 = (req, res) => {
-    res.status(200).render("error404");
+    res.status(200).render("../public/views/error404");
 };
 
 exports.logine = (req, res) => {
@@ -32,10 +32,10 @@ exports.logine = (req, res) => {
                         res.session = true;
                         login = res.session;
                         isLogin = 1;
-                        res.status(200).render("index", { login: login });
+                        res.status(200).render("../public/views/index", { login: login });
                     } else {
                         isLogin = 2;
-                        res.status(200).render("login", {
+                        res.status(200).render("../public/views/login", {
                             isLogin: isLogin,
                             login: login,
                         });
@@ -45,7 +45,7 @@ exports.logine = (req, res) => {
         });
     } else {
         isLogin = 3;
-        res.status(200).render("login", { isLogin: isLogin, login: login });
+        res.status(200).render("../public/views/login", { isLogin: isLogin, login: login });
     }
 };
 
@@ -62,7 +62,7 @@ exports.logout = (req, res) => {
 
 exports.postear = (req, res) => {
     if(login){
-        res.status(200).render("postCreator");
+        res.status(200).render("../public/views/postCreator");
     }
     else{
         isLogin = 4
@@ -71,7 +71,7 @@ exports.postear = (req, res) => {
 };
 exports.postear2 = (req, res) => {
     if(login){
-        res.status(200).render("postPrueba", { isLogin: isLogin, login: login });
+        res.status(200).render("../public/views/postPrueba", { isLogin: isLogin, login: login });
     }
     else{
         isLogin = 4
@@ -80,11 +80,11 @@ exports.postear2 = (req, res) => {
 };
 
 exports.seccionAdmin = (req, res) => {
-    res.status(200).render("edicionPosteos", {data:TwoModel.find()});
+    res.status(200).render("../public/views/edicionPosteos", {data:TwoModel.find()});
 };
 
 exports.config = (req, res) => {
-    res.status(200).render("config");
+    res.status(200).render("../public/views/config");
 };
 
 
@@ -100,7 +100,7 @@ exports.subirPost = (req, res) => {
         tag: req.body.tag,
     });
 
-    res.status(200).render("edicionPosteos", {data:TwoModel.find()});
+    res.status(200).render("../public/views/edicionPosteos", {data:TwoModel.find()});
 };
 
 //Multer
