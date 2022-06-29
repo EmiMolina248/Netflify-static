@@ -5,7 +5,7 @@ const path = require("path");
 const morgan = require("morgan");
 const cloudinary = require("cloudinary").v2;
 const app = express();
-const myRouter = require("./API/routes/myRouter");
+const myRouter = require("./API/routes/myRouter.js");
 const cors = require("cors");
 const session = require('express-session');
 //Defino el motor de plantillas a utilizar
@@ -13,7 +13,7 @@ app.set("view engine", "ejs");
 //Defino la localización de mis vistas
 app.set("./public/views", path.join(__dirname, "views"));
 
-app.use("./API/routes/myRouter", myRouter);
+app.use("./API/routes/myRouter.js", myRouter);
 
 app.use(cors());
 //Middlewares
