@@ -4,7 +4,7 @@ let login;
 
 //Ejemplo de respuesta a una petición de tipo GET
 exports.inicio = (req, res) => {
-res.status(200).render("../public/views/index", { login:login, isLogin:isLogin});
+res.status(200).render("../public/views/princp", { login:login, isLogin:isLogin});
 
 };
 
