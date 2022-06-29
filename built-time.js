@@ -1,1 +1,0 @@
-module.exports = 'Tue Jun 28 2022 22:10:40 GMT-0300 (hora estándar de Argentina)'

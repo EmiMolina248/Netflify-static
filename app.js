@@ -5,7 +5,7 @@ const path = require("path");
 const morgan = require("morgan");
 const cloudinary = require("cloudinary").v2;
 const app = express();
-const myRouter = require("./api/routes/myRouter");
+const myRouter = require("./routes/myRouter");
 const cors = require("cors");
 const session = require('express-session');
 //Defino el motor de plantillas a utilizar
