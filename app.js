@@ -11,7 +11,7 @@ const session = require('express-session');
 //Defino el motor de plantillas a utilizar
 app.set("view engine", "ejs");
 //Defino la localización de mis vistas
-app.set("./public/views", path.join(__dirname, "views"));
+app.set("./views", path.join(__dirname, "views"));
 
 
 
@@ -32,7 +32,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 //Agrego un enrutador compatible
-app.use("./api/routes/myRouter", myRouter);
 app.use("/", myRouter);
 
 module.exports = app;
