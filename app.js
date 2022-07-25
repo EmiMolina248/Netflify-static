@@ -5,9 +5,11 @@ const path = require("path");
 const morgan = require("morgan");
 const cloudinary = require("cloudinary").v2;
 const app = express();
-const myRouter = require("./routes/myRouter");
+const myRouter = express.Router;
 const cors = require("cors");
 const session = require('express-session');
+const serverless = require("serverless-http");
+
 //Defino el motor de plantillas a utilizar
 app.set("view engine", "ejs");
 //Defino la localización de mis vistas
@@ -30,8 +32,26 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
+//const Admin = require("../models/myModel");
+//const moment = require("moment");
+
+//Ejemplo de respuesta a una petición de tipo GET
+app.use ("/" , (req, res) => {
+res.status(200).render("index.ejs", { login:0, isLogin:false});
+});
+
+//const msg = new Admin({
+    //nombre: "admin",
+    //apellido: "1",
+    //usuario: "Admin1",
+    //contraseña: "administrador",
+   // avatar: "...",
+   // email: "adminhospital@gmail.com",
+//});
 
 //Agrego un enrutador compatible
 app.use("/", myRouter);
 
 module.exports = app;
+module.exports.handler = serverless(app);
+
