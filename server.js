@@ -1,35 +1,66 @@
-//const mongoose = require("mongoose");
-//const app = require("./app");
-//const dotenv = require("dotenv");
+//Todo lo relacionado con express (módulos, middlewares, configuraciones etc)
+
+const express = require("express");
+const path = require("path");
+const morgan = require("morgan");
+const cloudinary = require("cloudinary").v2;
+const app = express();
+//const myRouter = express.Router;
+const cors = require("cors");
+const session = require('express-session');
+const port = 3500;
+
+
+//Corremos el servidor en el puerto seleccionado
+app.listen(port, () => {
+    console.log(`Servidor corriendo en el puerto ${port} correctamente`);
+});
+
+//Defino el motor de plantillas a utilizar
+app.set("view engine", "ejs");
+//Defino la localización de mis vistas
+app.set("./views", path.join(__dirname, "/views"));
 
 
 
+app.use(cors());
+//Middlewares
+app.use(session({ 		//Usuage
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+}));
+app.use(morgan("dev"));
+//Middleware para poder obtener data de los requests con BodyParser
+app.use(express.json());
+//Configurando archivos estáticos
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
 
+//const Admin = require("../models/myModel");
+//const moment = require("moment");
 
+//Ejemplo de respuesta a una petición de tipo GET
+app.get("/" , (req, res) => {
+  res.status(200).render("/views/index.ejs", { login:0, isLogin:false});
+});
 
+app.get("/login", (req, res) =>{
+  res.status(200).render("login.ejs", { login:0, isLogin:false});
+});
 
-//Carga de variables de entorno
-//dotenv.config({ path: "./config.env" });
-//const DB = process.env.DATABASE.replace(
-   // "<PASSWORD>",
-  //  process.env.DATABASE_PASSWORD
-//);
+//const msg = new Admin({
+    //nombre: "admin",
+    //apellido: "1",
+    //usuario: "Admin1",
+    //contraseña: "administrador",
+   // avatar: "...",
+   // email: "adminhospital@gmail.com",
+//});
 
-//Conexión al cloud de Mongodb Atlas ...
-//mongoose
-  //  .connect(DB, {
-   //    useNewUrlParser: true,
-    //})
-    //.then((con) => {
-        //console.log(con.connections);
-   //     console.log("Connected to database");
- //   });
+//Agrego un enrutador compatible
+//app.use("/", myRouter);
 
+//module.exports = app;
 
-// app.get("/test",(req,res) =>{
-//  res.send("GENIOOOOO")
-// });
-// //Corremos el servidor en el puerto seleccionado
-// app.listen(port, () => {
-//     console.log(`Servidor corriendo en el puerto ${port} correctamente`);
-// });
