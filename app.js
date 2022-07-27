@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //Ejemplo de respuesta a una petición de tipo GET
 app.get("/" , (req, res) => {
-  res.status(200).render("index.ejs", { login:0, isLogin:false});
+  res.status(200).render("/views/index.ejs", { login:0, isLogin:false});
 });
 
 app.get("/login", (req, res) =>{
