@@ -8,19 +8,18 @@ const app = express();
 const myRouter = express.Router;
 const cors = require("cors");
 const session = require('express-session');
-const serverless = require("serverless-http");
-//const port = 3500;
+const port = 3500;
 
 
 //Corremos el servidor en el puerto seleccionado
-//app.listen(port, () => {
-  //  console.log(`Servidor corriendo en el puerto ${port} correctamente`);
-//});
+app.listen(port, () => {
+    console.log(`Servidor corriendo en el puerto ${port} correctamente`);
+});
 
 //Defino el motor de plantillas a utilizar
 app.set("view engine", "ejs");
 //Defino la localización de mis vistas
-app.set("./dist", path.join(__dirname, "dist"));
+app.set("./views", path.join(__dirname, "views"));
 
 
 
@@ -43,8 +42,12 @@ app.use(express.static(path.join(__dirname, "public")));
 //const moment = require("moment");
 
 //Ejemplo de respuesta a una petición de tipo GET
-myRouter.use ("/" , (req, res) => {
-res.status(200).render("index.ejs", { login:0, isLogin:false});
+app.get("/" , (req, res) => {
+  res.status(200).render("index.ejs", { login:0, isLogin:false});
+});
+
+app.get("/login", (req, res) =>{
+  res.status(200).render("login.ejs", { login:0, isLogin:false});
 });
 
 //const msg = new Admin({
@@ -57,8 +60,7 @@ res.status(200).render("index.ejs", { login:0, isLogin:false});
 //});
 
 //Agrego un enrutador compatible
-app.use("/.netlify/functions/app", myRouter);
+app.use("/", myRouter);
 
 module.exports = app;
-module.exports.handler = serverless(app);
 
