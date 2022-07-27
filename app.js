@@ -5,7 +5,7 @@ const path = require("path");
 const morgan = require("morgan");
 const cloudinary = require("cloudinary").v2;
 const app = express();
-const myRouter = express.Router;
+//const myRouter = express.Router;
 const cors = require("cors");
 const session = require('express-session');
 const port = 3500;
@@ -60,7 +60,7 @@ app.get("/login", (req, res) =>{
 //});
 
 //Agrego un enrutador compatible
-app.use("/", myRouter);
+//app.use("/", myRouter);
 
-module.exports = app;
+//module.exports = app;
 
