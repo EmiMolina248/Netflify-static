@@ -40,8 +40,9 @@
             crossorigin="anonymous"
         ></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <% if(login){ %>
         <script>
+         if(login){ 
+        
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -50,11 +51,9 @@
                 timer: 1500,
                 width: 300,
                 padding: 0.5,
-            });
-        </script>
-        <%}%>
-        <% if(isLogin == 4){ %>
-            <script>
+            })
+        }
+         if(isLogin == 4){
                 Swal.fire({
                     position: "top-end",
                     icon: "error",
@@ -64,8 +63,7 @@
                     width: 300,
                     padding: 0.5,
                 });
-                
-            </script>
-            <%}%>
+            }
+        </script>
     </body>
 </html>

@@ -60,27 +60,15 @@
                             >Contact</a
                         >
                     </li>
-                    <% if(login == true){ %>
-                        <li class="nav-item">
-                            <button type="button" class="btn btn-outline-primary botonposteo"><a href="subirPost"
-                                > Postear</a
-                            ></button>
-                    </li>
-                <%}%>
-                    <% if(login){ %>
-                        <li class="nav-item">
-                            <button type="button" class="btn btn-outline-primary botoncerrarsesion"><a href="logout"
-                                >Cerrar sesion</a
-                            ></button>
-                    </li>
-                 <% } else{ %>
+                    
+
+                
                 <li class="nav-item">
-                    <button type="button" class="btn btn-outline-primary botoninicio"><a href="/login"
+                    <button type="button" class="btn btn-outline-primary botoninicio"><a href="login.ejs"
                         >Iniciar sesión</a
                     ></button>
                     
                 </li>
-                <%}%>
                 </ul>
             </div>
         </div>
